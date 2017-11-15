@@ -48,6 +48,5 @@ def main():
     print("\nPush the Quit button to exit all files.")
 
     PPM_render(wn) # needed to render all of the images you have instantiated
-    pass
 
 main()

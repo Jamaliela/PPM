@@ -109,7 +109,7 @@ class PPM:
     """
     Class which can be used to open, close, and display PPM P3 (ASCII) files.
     """
-
+    # The Berea logo from the assignment document
     PPMDEFAULT = '''P3
 # Created by OOM class, by Dr. Jan Pearce, Berea College
 8 10
@@ -124,6 +124,7 @@ class PPM:
 30 30 30 255 255 255 255 255 255 63 72 204 255 255 255 255 255 255 63 72 204 105 105 105
 15 15 15 252 252 253 255 255 255 63 72 204 63 72 204 63 72 204 63 72 204 120 120 120
 0 0 0 20 20 20 40 40 40 60 60 60 80 80 80 100 100 100 120 120 120 140 140 140'''
+
     def __init__(self, master, inasciifile = "default.ppm"):
         """
         Opens or creates a PPM P3 file named inasciifile to construct a PPM object
