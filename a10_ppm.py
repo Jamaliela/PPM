@@ -41,12 +41,11 @@ def main():
     ppmobject.PPM_make_red()
     ppmobject.PPM_display()
 
-
     # TODO Add your own method calls for the methods you are completing/creating from scratch
-
 
     print("\nPush the Quit button to exit all files.")
 
-    PPM_render(wn) # needed to render all of the images you have instantiated
+    PPM_render(wn)  # needed to render all of the images you have instantiated
+
 
 main()

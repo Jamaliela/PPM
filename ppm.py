@@ -2,7 +2,7 @@
 # Author: Dr. Scott Heggen      TODO: Change this to your names
 # Username: heggens             TODO: Change this to your usernames
 #
-# Assignment: A11: PPM
+# Assignment: A10: PPM
 #
 # Purpose:  A module for loading and displaying PPM-P3 files using Python
 ######################################################################
@@ -429,4 +429,4 @@ class PPM:
 # End of PPM Class
 
 
-# See a11-ppm.py for code that uses the PPM class.
+# See a10-ppm.py for code that uses the PPM class.
