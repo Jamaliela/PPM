@@ -389,7 +389,18 @@ class PPM:
         # The final call to self.PPM_updatefrompixellist(newpixellist) is essential for updating member attribute appropriately.
 
         # TODO FIX ME: write the needed changes to newpixellist here
-
+        self.width = len(newpixellist[0])
+        self.height = len(newpixellist)
+        row = 0
+        for rowlist in newpixellist:
+            col = 0
+            for pixel in rowlist:
+                newpixellist[row][col][0] = (newpixellist[row][col][0] + newpixellist[row][col][1] + newpixellist[row][col][2]) // 3  # update red
+                newpixellist[row][col][1] = (newpixellist[row][col][0] + newpixellist[row][col][1] + newpixellist[row][col][2]) // 3  # update green
+                newpixellist[row][col][2] = (newpixellist[row][col][0] + newpixellist[row][col][1] + newpixellist[row][col][2]) // 3  # update blue
+                col += 1
+            row += 1
+        print(self.outasciifile + " output file turned grey.")
         self.PPM_updatefrompixellist(newpixellist)      # This call will update all member attributes appropriately.
 
     def PPM_flip_horizontal(self):
@@ -399,14 +410,24 @@ class PPM:
         :return: None
         """
         newpixellist = self.pixellist
-
+        secondlist = copy.deepcopy(newpixellist)
         # Hint 1: What needs to be done here is to convert newpixellist to the equivalent horizontally flipped image.
         # Hint 2: You might want a new object of the correct size or a deep copy.
         # The final call to self.PPM_updatefrompixellist(newpixellist) is essential for updating member attribute appropriately.
 
         # TODO FIX ME: write the needed changes to newpixellist here
+        self.width = len(newpixellist[0])
+        self.height = len(newpixellist)
+        row = 0
+        for rowlist in newpixellist:
+            col = 0
+            for pixel in rowlist:
+                newpixellist[row][col] = secondlist[row][(self.width-1)-col]
+                col += 1
+            row += 1
+        print(self.outasciifile + " output file turned horizontally .")
+        self.PPM_updatefrompixellist(newpixellist)      # This call will update all member attributes appropriately.
 
-        self.PPM_updatefrompixellist(newpixellist) # This call will update all member apttributes appropriately.
 
     def PPM_rotateclockwise(self):
         """

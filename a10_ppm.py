@@ -38,7 +38,9 @@ def main():
     # Example using a user-defined file
     filename = input("Please input name of PPM-P3 file: ")
     ppmobject = PPM(wn, filename)
-    ppmobject.PPM_make_red()
+    # ppmobject.PPM_make_red()
+    ppmobject.PPM_grayscale()
+    ppmobject.PPM_flip_horizontal()
     ppmobject.PPM_display()
 
     # TODO Add your own method calls for the methods you are completing/creating from scratch
