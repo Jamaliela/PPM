@@ -400,7 +400,7 @@ class PPM:
                 newpixellist[row][col][2] = (newpixellist[row][col][0] + newpixellist[row][col][1] + newpixellist[row][col][2]) // 3  # update blue
                 col += 1
             row += 1
-        print(self.outasciifile + " output file turned grey.")
+        print(self.outasciifile + " output file turned gray.")
         self.PPM_updatefrompixellist(newpixellist)      # This call will update all member attributes appropriately.
 
     def PPM_flip_horizontal(self):
@@ -436,12 +436,14 @@ class PPM:
         :return: None
         """
         newpixellist = self.pixellist
+        secondlist = copy.deepcopy(newpixellist)
 
         # Hint 1: What needs to be done here is to convert newpixellist to the equivalent rotated image.
         # Hint 2: It might be helpful to make a new object of the correct size
         # The final call to self.PPM_updatefrompixellist(newpixellist) is essential for updating member attribute appropriately.
 
         # TODO FIX ME: write the needed changes to newpixellist here
+        secondlist = secondlist[row][col]*
 
         self.PPM_updatefrompixellist(newpixellist) # This call will update all member attributes appropriately.
 
