@@ -444,17 +444,16 @@ class PPM:
 
         # TODO FIX ME: write the needed changes to newpixellist here
         newpixellist = [[]]
+        reference=copy.deepcopy(self.pixellist)
         for i in range(self.width-1):
             newpixellist.append([])
         for i in range(self.width):
             for j in range(self.height):
                 newpixellist[i].append([])
 
-        for x,y in newpixellist:
-            x = newpixellist[row], newpixellist[col]
-            y = newpixellist[row],[self.width - [col]]
-
-
+        for x in range(self.width):
+            for y in range(self.height):
+                newpixellist[x][y] = reference[(self.height-1)-y][x]
 
         self.PPM_updatefrompixellist(newpixellist) # This call will update all member attributes appropriately.
 
