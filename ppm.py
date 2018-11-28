@@ -436,8 +436,6 @@ class PPM:
         :return: None
         """
         newpixellist = self.pixellist
-
-
         # Hint 1: What needs to be done here is to convert newpixellist to the equivalent rotated image.
         # Hint 2: It might be helpful to make a new object of the correct size
         # The final call to self.PPM_updatefrompixellist(newpixellist) is essential for updating member attribute appropriately.
@@ -458,6 +456,28 @@ class PPM:
         self.PPM_updatefrompixellist(newpixellist) # This call will update all member attributes appropriately.
 
     # TODO FIX ME: write at least one additional PPM class method
+
+    def PPM_negative_scale(self):
+        """
+        Converts image to negative scale
+
+        :return: None
+        """
+        newpixellist = self.pixellist
+        self.width = len(newpixellist[0])
+        self.height = len(newpixellist)
+        row = 0
+        for rowlist in newpixellist:
+            col = 0
+            for pixel in rowlist:
+                newpixellist[row][col][0] = 255 - newpixellist[row][col][0]  # update green
+                newpixellist[row][col][1] = 255 - newpixellist[row][col][1]  # update green
+                newpixellist[row][col][2] = 255 - newpixellist[row][col][2]  # update green
+                col += 1
+            row += 1
+        print(self.outasciifile + " output file in negative scale.")
+        self.PPM_updatefrompixellist(newpixellist)      # This call will update all member attributes appropriately.
+
 
 # End of PPM Class
 
