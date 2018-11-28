@@ -41,9 +41,9 @@ def main():
     # ppmobject.PPM_make_red()
     # ppmobject.PPM_grayscale()
     # ppmobject.PPM_flip_horizontal()
-    ppmobject.PPM_rotateclockwise()
+    # ppmobject.PPM_rotateclockwise()
+    ppmobject.PPM_negative_scale()
     ppmobject.PPM_display()
-
     # TODO Add your own method calls for the methods you are completing/creating from scratch
 
     print("\nPush the Quit button to exit all files.")
