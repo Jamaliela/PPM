@@ -436,14 +436,25 @@ class PPM:
         :return: None
         """
         newpixellist = self.pixellist
-        secondlist = copy.deepcopy(newpixellist)
+
 
         # Hint 1: What needs to be done here is to convert newpixellist to the equivalent rotated image.
         # Hint 2: It might be helpful to make a new object of the correct size
         # The final call to self.PPM_updatefrompixellist(newpixellist) is essential for updating member attribute appropriately.
 
         # TODO FIX ME: write the needed changes to newpixellist here
-        secondlist = secondlist[row][col]*
+        newpixellist = [[]]
+        for i in range(self.width-1):
+            newpixellist.append([])
+        for i in range(self.width):
+            for j in range(self.height):
+                newpixellist[i].append([])
+
+        for x,y in newpixellist:
+            x = newpixellist[row], newpixellist[col]
+            y = newpixellist[row],[self.width - [col]]
+
+
 
         self.PPM_updatefrompixellist(newpixellist) # This call will update all member attributes appropriately.
 
