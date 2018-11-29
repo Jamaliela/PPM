@@ -1,7 +1,6 @@
 ######################################################################
-# Author: Dr. Scott Heggen      TODO: Change this to your names
-# Username: heggens             TODO: Change this to your usernames
-#
+# Author: Dr. Scott Heggen      TODO: Ela Jamali & Emely Alfaro
+# Username: heggens             TODO: Jamalie & Alfarozavalae
 # Assignment: A10: PPM
 #
 # Purpose:  A module for loading and displaying PPM-P3 files using Python
@@ -389,18 +388,20 @@ class PPM:
         # The final call to self.PPM_updatefrompixellist(newpixellist) is essential for updating member attribute appropriately.
 
         # TODO FIX ME: write the needed changes to newpixellist here
-        self.width = len(newpixellist[0])
-        self.height = len(newpixellist)
-        row = 0
-        for rowlist in newpixellist:
-            col = 0
-            for pixel in rowlist:
+        self.width = len(newpixellist[0])  # setting the length of the width which is the columns
+        self.height = len(newpixellist)   # setting the length of the height which represents the rows
+        row = 0   # we want to start from the first row
+        for rowlist in newpixellist:   # having the for loop to check and update each row one by one
+            col = 0   # we want to start from the very first column
+            for pixel in rowlist:   # we will loop and check and update every pixel in each column
+                # what is happening here is that to have grey scale each RGB value in pixel will the average of all the RGB
+                # values that it has
                 newpixellist[row][col][0] = (newpixellist[row][col][0] + newpixellist[row][col][1] + newpixellist[row][col][2]) // 3  # update red
                 newpixellist[row][col][1] = (newpixellist[row][col][0] + newpixellist[row][col][1] + newpixellist[row][col][2]) // 3  # update green
                 newpixellist[row][col][2] = (newpixellist[row][col][0] + newpixellist[row][col][1] + newpixellist[row][col][2]) // 3  # update blue
-                col += 1
-            row += 1
-        print(self.outasciifile + " output file turned gray.")
+                col += 1  # we will be going through all the columns in the same row
+            row += 1  # after we are done with all the columns we will move to the next row
+        print(self.outasciifile + " output file turned gray.")  # we will print that output file has been turned grey.
         self.PPM_updatefrompixellist(newpixellist)      # This call will update all member attributes appropriately.
 
     def PPM_flip_horizontal(self):
@@ -410,22 +411,18 @@ class PPM:
         :return: None
         """
         newpixellist = self.pixellist
-        secondlist = copy.deepcopy(newpixellist)
         # Hint 1: What needs to be done here is to convert newpixellist to the equivalent horizontally flipped image.
         # Hint 2: You might want a new object of the correct size or a deep copy.
         # The final call to self.PPM_updatefrompixellist(newpixellist) is essential for updating member attribute appropriately.
 
         # TODO FIX ME: write the needed changes to newpixellist here
-        self.width = len(newpixellist[0])
-        self.height = len(newpixellist)
-        row = 0
-        for rowlist in newpixellist:
-            col = 0
-            for pixel in rowlist:
-                newpixellist[row][col] = secondlist[row][(self.width-1)-col]
-                col += 1
-            row += 1
-        print(self.outasciifile + " output file turned horizontally .")
+        self.width = len(newpixellist[0])   # setting the length of the width which is the columns
+        self.height = len(newpixellist)     # setting the length of the height which represents the rows
+        row = 0    # we want to start from the first row
+        for rowlist in newpixellist:  # we will go through each row one by one
+            rowlist.reverse()   # and reverse all the elements in it so we can flip it horizontally
+            row += 1   # then we will add one more to the rows so we can go to the next row
+        print(self.outasciifile + " output file turned horizontally .")  # we will print that output file has turned horizontally
         self.PPM_updatefrompixellist(newpixellist)      # This call will update all member attributes appropriately.
 
 
@@ -435,25 +432,25 @@ class PPM:
 
         :return: None
         """
-        newpixellist = self.pixellist
+        newpixellist = self.pixellist # overriding
         # Hint 1: What needs to be done here is to convert newpixellist to the equivalent rotated image.
         # Hint 2: It might be helpful to make a new object of the correct size
         # The final call to self.PPM_updatefrompixellist(newpixellist) is essential for updating member attribute appropriately.
 
         # TODO FIX ME: write the needed changes to newpixellist here
-        newpixellist = [[]]
-        reference=copy.deepcopy(self.pixellist)
-        for i in range(self.width-1):
-            newpixellist.append([])
-        for i in range(self.width):
-            for j in range(self.height):
-                newpixellist[i].append([])
+        newpixellist = []  # we start by making an empty list so we can append rows and columns to it
+        reference=copy.deepcopy(self.pixellist)  # reference as a deep copy for moving the elements of the original ppm
+        for i in range(self.width):  # this for loop function will be making our rows with the number of columns
+            newpixellist.append([])  # appending empty rows to newpixellist
+        for i in range(self.width):  # this for loop will go in each row
+            for j in range(self.height):  # this for loop will be appending the columns with the number of previous rows
+                newpixellist[i].append([])  # we will be appending empty lists for columns for each row that we are in
+        # these for loops will use the deepcopy to move the RGB numbers to the right space
+        for x in range(self.width):  # for loop for accessing each row
+            for y in range(self.height):  # for loop for accessing each column
+                newpixellist[x][y] = reference[(self.height-1)-y][x]  # moving the elements from the previous ppm to new one
 
-        for x in range(self.width):
-            for y in range(self.height):
-                newpixellist[x][y] = reference[(self.height-1)-y][x]
-
-        self.PPM_updatefrompixellist(newpixellist) # This call will update all member attributes appropriately.
+        self.PPM_updatefrompixellist(newpixellist)  # This call will update all member attributes appropriately.
 
     # TODO FIX ME: write at least one additional PPM class method
 
@@ -464,18 +461,18 @@ class PPM:
         :return: None
         """
         newpixellist = self.pixellist
-        self.width = len(newpixellist[0])
-        self.height = len(newpixellist)
-        row = 0
-        for rowlist in newpixellist:
-            col = 0
-            for pixel in rowlist:
-                newpixellist[row][col][0] = 255 - newpixellist[row][col][0]  # update green
+        self.width = len(newpixellist[0])  # setting the length of the width which is the columns
+        self.height = len(newpixellist)    # setting the length of the height which represents the rows
+        row = 0   # we want to start from the first row
+        for rowlist in newpixellist:   # having the for loop to check and update each row one by one
+            col = 0   # we want to start from the very first column
+            for pixel in rowlist:  # we will loop and check and update every pixel in each column
+                newpixellist[row][col][0] = 255 - newpixellist[row][col][0]  # update red
                 newpixellist[row][col][1] = 255 - newpixellist[row][col][1]  # update green
-                newpixellist[row][col][2] = 255 - newpixellist[row][col][2]  # update green
-                col += 1
-            row += 1
-        print(self.outasciifile + " output file in negative scale.")
+                newpixellist[row][col][2] = 255 - newpixellist[row][col][2]  # update blue
+                col += 1  # we will be going through all the columns in the same row
+            row += 1    # after we are done with all the columns we will move to the next row
+        print(self.outasciifile + " output file in negative scale.")  # we will print that output file is now in negative scale
         self.PPM_updatefrompixellist(newpixellist)      # This call will update all member attributes appropriately.
 
 

@@ -1,6 +1,6 @@
 ######################################################################
-# Author: Dr. Scott Heggen      TODO: Change this to your names
-# Username: heggens             TODO: Change this to your usernames
+# Author: Dr. Scott Heggen      TODO: Ela Jamali & Emely Alfaro
+# Username: heggens             TODO: Jamalie & Alfarozavale
 #
 # Assignment: A11: PPM
 #
@@ -38,12 +38,12 @@ def main():
     # Example using a user-defined file
     filename = input("Please input name of PPM-P3 file: ")
     ppmobject = PPM(wn, filename)
-    # ppmobject.PPM_make_red()
-    # ppmobject.PPM_grayscale()
-    # ppmobject.PPM_flip_horizontal()
+    ppmobject.PPM_make_red()
+    ppmobject.PPM_grayscale()
+    ppmobject.PPM_flip_horizontal()
     ppmobject.PPM_rotateclockwise()
+    ppmobject.PPM_negative_scale()
     ppmobject.PPM_display()
-
     # TODO Add your own method calls for the methods you are completing/creating from scratch
 
     print("\nPush the Quit button to exit all files.")
